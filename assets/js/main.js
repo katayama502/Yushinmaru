@@ -1,13 +1,13 @@
 /**
- * YUSHINMARU (有真丸) - Vibrant Marine Blue & Pure White Engine
- * Interactive Controls, Catch Filter, A4 License Zoom, Modals & Video Parallax
+ * 有真丸 YUSHINMARU
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  initSplashScreen();
-  initHeaderScroll();
-  initMobileNav();
-  initScrollVideoHero();
+  initScrollbarVar();
+  initMenu();
+  initStage();
+  initParallax();
+  initReveal();
   initBoatVideoModal();
   initCatchFilterAndLightbox();
   initLicenseModal();
@@ -15,278 +15,289 @@ document.addEventListener('DOMContentLoaded', () => {
   initSmoothScroll();
 });
 
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 /* -------------------------------------------------------------------------- */
-/* 1. Splash Screen Timeout                                                   */
+/* Scroll helper: one rAF loop for every scroll-linked effect                 */
 /* -------------------------------------------------------------------------- */
-function initSplashScreen() {
-  const splashScreen = document.getElementById('splash-screen');
-  if (!splashScreen) return;
-  setTimeout(() => {
-    splashScreen.style.display = 'none';
-  }, 3600);
+const scrollHandlers = [];
+let ticking = false;
+function onScroll(fn) {
+  scrollHandlers.push(fn);
+  fn();
+}
+function runScrollHandlers() {
+  scrollHandlers.forEach(fn => fn());
+  ticking = false;
+}
+window.addEventListener('scroll', () => {
+  if (!ticking) {
+    requestAnimationFrame(runScrollHandlers);
+    ticking = true;
+  }
+}, { passive: true });
+window.addEventListener('resize', runScrollHandlers);
+
+/* -------------------------------------------------------------------------- */
+/* Scrollbar width → CSS var (grid is computed from viewport width)           */
+/* -------------------------------------------------------------------------- */
+function initScrollbarVar() {
+  const set = () => {
+    const sbw = window.innerWidth - document.documentElement.clientWidth;
+    document.documentElement.style.setProperty('--sbw', `${sbw}px`);
+  };
+  set();
+  window.addEventListener('resize', set);
 }
 
 /* -------------------------------------------------------------------------- */
-/* 2. Header Scroll Backdrop                                                  */
+/* Modal helpers                                                              */
 /* -------------------------------------------------------------------------- */
-function initHeaderScroll() {
-  const header = document.querySelector('.site-header');
-  if (!header) return;
+function openModal(modal) {
+  modal.classList.add('active');
+  modal.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('is-locked');
+}
 
-  function checkScroll() {
-    if (window.scrollY > 40) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
+function closeModal(modal) {
+  modal.classList.remove('active');
+  modal.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('is-locked');
+}
+
+function bindModalClose(modal, closeBtn, onClose) {
+  const close = () => {
+    closeModal(modal);
+    onClose?.();
+  };
+  closeBtn?.addEventListener('click', close);
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) close();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('active')) close();
+  });
+}
+
+/* -------------------------------------------------------------------------- */
+/* Menu overlay                                                               */
+/* -------------------------------------------------------------------------- */
+function initMenu() {
+  const btn = document.querySelector('.menu-btn');
+  const menu = document.getElementById('menu');
+  if (!btn || !menu) return;
+
+  function setOpen(open) {
+    menu.classList.toggle('is-open', open);
+    menu.setAttribute('aria-hidden', String(!open));
+    btn.setAttribute('aria-expanded', String(open));
+    btn.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
+    document.body.classList.toggle('is-locked', open);
+    document.body.classList.toggle('menu-open', open);
+  }
+
+  btn.addEventListener('click', () => setOpen(!menu.classList.contains('is-open')));
+  menu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setOpen(false)));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && menu.classList.contains('is-open')) setOpen(false);
+  });
+}
+
+/* -------------------------------------------------------------------------- */
+/* Fixed video stage: darken over the about text, show fixed logo             */
+/* -------------------------------------------------------------------------- */
+function initStage() {
+  const video = document.getElementById('hero-video');
+  const shade = document.querySelector('.stage-shade');
+  const cover = document.querySelector('.cover');
+  const coverLogo = document.querySelector('.cover-logo');
+  const logo = document.querySelector('.fixed-logo');
+  const cats = document.querySelectorAll('.cat');
+
+  if (video) {
+    video.muted = true;
+    video.play().catch(() => {});
+  }
+
+  onScroll(() => {
+    const y = window.scrollY;
+    const vh = window.innerHeight;
+    const r = Math.min(1, y / vh);
+
+    if (shade) shade.style.opacity = String(0.12 + r * 0.6);
+    if (coverLogo && !reduceMotion) {
+      coverLogo.style.opacity = String(Math.max(0, 1 - r * 1.6));
+      coverLogo.style.transform = `translateY(${y * -0.15}px)`;
     }
-  }
+    if (logo && cover) logo.classList.toggle('is-shown', y > cover.offsetHeight * 0.6);
 
-  window.addEventListener('scroll', checkScroll, { passive: true });
-  checkScroll();
+    cats.forEach(cat => {
+      const rect = cat.getBoundingClientRect();
+      cat.classList.toggle('is-active', rect.top < vh * 0.5 && rect.bottom > vh * 0.5);
+    });
+  });
 }
 
 /* -------------------------------------------------------------------------- */
-/* 3. Mobile Navigation Drawer                                                 */
+/* Parallax for scattered images                                              */
 /* -------------------------------------------------------------------------- */
-function initMobileNav() {
-  const toggleBtn = document.querySelector('.mobile-nav-toggle');
-  const drawer = document.querySelector('.mobile-drawer');
-  const overlay = document.querySelector('.drawer-overlay');
-  const closeBtn = document.querySelector('.drawer-close');
-  const navLinks = document.querySelectorAll('.mobile-nav-link');
+function initParallax() {
+  const items = [...document.querySelectorAll('[data-speed]')];
+  if (!items.length || reduceMotion) return;
 
-  if (!toggleBtn || !drawer || !overlay) return;
-
-  function openDrawer() {
-    drawer.classList.add('active');
-    overlay.classList.add('active');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeDrawer() {
-    drawer.classList.remove('active');
-    overlay.classList.remove('active');
-    document.body.style.overflow = '';
-  }
-
-  toggleBtn.addEventListener('click', openDrawer);
-  closeBtn?.addEventListener('click', closeDrawer);
-  overlay.addEventListener('click', closeDrawer);
-  navLinks.forEach(link => link.addEventListener('click', closeDrawer));
+  onScroll(() => {
+    const vh = window.innerHeight;
+    items.forEach(el => {
+      const rect = el.parentElement.getBoundingClientRect();
+      if (rect.bottom < -vh || rect.top > vh * 2) return;
+      const top = el.offsetTop + rect.top;
+      const offset = (top + el.offsetHeight / 2 - vh / 2) * parseFloat(el.dataset.speed);
+      el.style.transform = `translate3d(0, ${-offset}px, 0)`;
+    });
+  });
 }
 
 /* -------------------------------------------------------------------------- */
-/* 4. Scroll Video Hero Effect                                                */
+/* Fade-in on scroll                                                          */
 /* -------------------------------------------------------------------------- */
-function initScrollVideoHero() {
-  const heroSection = document.getElementById('hero');
-  const heroVideo = document.getElementById('hero-video');
-  const heroContent = document.querySelector('.hero-content');
+function initReveal() {
+  const items = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)) {
+    items.forEach(el => el.classList.add('is-in'));
+    return;
+  }
 
-  if (!heroSection || !heroVideo) return;
-
-  heroVideo.muted = true;
-  heroVideo.play().catch(err => console.log('Autoplay deferred:', err));
-
-  let ticking = false;
-
-  function updateVideoOnScroll() {
-    const scrollY = window.scrollY;
-    const heroHeight = heroSection.offsetHeight || window.innerHeight;
-
-    if (scrollY <= heroHeight) {
-      const scrollRatio = scrollY / heroHeight;
-      const videoScale = 1.05 + scrollRatio * 0.15;
-      const videoBrightness = Math.max(0.45, 0.85 - scrollRatio * 0.3);
-
-      heroVideo.style.transform = `scale(${videoScale})`;
-      heroVideo.style.filter = `brightness(${videoBrightness}) contrast(1.05)`;
-
-      if (heroContent) {
-        heroContent.style.transform = `translateY(${scrollY * 0.35}px)`;
-        heroContent.style.opacity = Math.max(0, 1 - scrollRatio * 1.3);
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-in');
+        io.unobserve(entry.target);
       }
-    }
-    ticking = false;
-  }
+    });
+  }, { rootMargin: '0px 0px -10% 0px' });
 
-  window.addEventListener('scroll', () => {
-    if (!ticking) {
-      requestAnimationFrame(updateVideoOnScroll);
-      ticking = true;
-    }
-  }, { passive: true });
+  items.forEach(el => io.observe(el));
 }
 
 /* -------------------------------------------------------------------------- */
-/* 5. Boat Video Modal                                                        */
+/* Boat video modal                                                           */
 /* -------------------------------------------------------------------------- */
 function initBoatVideoModal() {
   const openBtn = document.getElementById('btn-open-boat-video');
-  const closeBtn = document.getElementById('btn-close-boat-video');
   const modal = document.getElementById('boat-video-modal');
   const video = document.getElementById('boat-modal-video');
-
   if (!openBtn || !modal) return;
 
   openBtn.addEventListener('click', () => {
-    modal.classList.add('active');
-    if (video) video.play();
+    openModal(modal);
+    video?.play().catch(() => {});
   });
 
-  function closeModal() {
-    modal.classList.remove('active');
-    if (video) video.pause();
-  }
-
-  closeBtn?.addEventListener('click', closeModal);
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) closeModal();
-  });
+  bindModalClose(modal, document.getElementById('btn-close-boat-video'), () => video?.pause());
 }
 
 /* -------------------------------------------------------------------------- */
-/* 6. Catch Gallery Filter & Lightbox                                         */
+/* Catch filter & lightbox                                                    */
 /* -------------------------------------------------------------------------- */
 function initCatchFilterAndLightbox() {
-  const filterBtns = document.querySelectorAll('.catch-filter-bar .filter-btn');
-  const catchCards = document.querySelectorAll('.catch-card');
+  const grid = document.getElementById('catch-grid');
+  const filterBtns = document.querySelectorAll('.catch-filter .filter-btn');
+  const cards = document.querySelectorAll('.catch-card');
   const lightbox = document.getElementById('catch-lightbox');
-  const closeBtn = document.getElementById('btn-close-catch-modal');
-  const modalImg = document.getElementById('catch-modal-img');
-  const modalTitle = document.getElementById('catch-modal-title');
-  const modalSpecs = document.getElementById('catch-modal-specs');
-  const modalComment = document.getElementById('catch-modal-comment');
-  const modalCat = document.getElementById('catch-modal-category');
 
-  // Filter functionality
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      const filter = btn.getAttribute('data-filter');
-
-      catchCards.forEach(card => {
-        const cat = card.getAttribute('data-category');
-        if (filter === 'all' || cat === filter) {
-          card.style.display = 'block';
-        } else {
-          card.style.display = 'none';
-        }
+      filterBtns.forEach(b => b.classList.toggle('is-active', b === btn));
+      const filter = btn.dataset.filter;
+      grid?.classList.toggle('is-filtered', filter !== 'all');
+      cards.forEach(card => {
+        card.classList.toggle('is-hidden', filter !== 'all' && card.dataset.category !== filter);
       });
     });
   });
 
-  // Lightbox functionality
-  catchCards.forEach(card => {
+  if (!lightbox) return;
+
+  const modalImg = document.getElementById('catch-modal-img');
+  const fields = [
+    [document.getElementById('catch-modal-title'), '.catch-title'],
+    [document.getElementById('catch-modal-specs'), '.catch-specs'],
+    [document.getElementById('catch-modal-comment'), '.catch-comment'],
+    [document.getElementById('catch-modal-category'), '.catch-category-tag'],
+  ];
+
+  cards.forEach(card => {
     card.addEventListener('click', () => {
-      const img = card.querySelector('img')?.src;
-      const title = card.querySelector('.catch-title')?.textContent;
-      const specs = card.querySelector('.catch-specs')?.textContent;
-      const comment = card.querySelector('.catch-comment')?.textContent;
-      const cat = card.querySelector('.catch-category-tag')?.textContent;
-
-      if (lightbox && modalImg) {
-        modalImg.src = img || '';
-        if (modalTitle) modalTitle.textContent = title || '';
-        if (modalSpecs) modalSpecs.textContent = specs || '';
-        if (modalComment) modalComment.textContent = comment || '';
-        if (modalCat) modalCat.textContent = cat || '';
-
-        lightbox.classList.add('active');
+      const img = card.querySelector('img');
+      if (modalImg && img) {
+        modalImg.src = img.src;
+        modalImg.alt = img.alt;
       }
+      fields.forEach(([target, selector]) => {
+        if (target) target.textContent = card.querySelector(selector)?.textContent || '';
+      });
+      openModal(lightbox);
     });
   });
 
-  closeBtn?.addEventListener('click', () => lightbox?.classList.remove('active'));
-  lightbox?.addEventListener('click', (e) => {
-    if (e.target === lightbox) lightbox.classList.remove('active');
-  });
+  bindModalClose(lightbox, document.getElementById('btn-close-catch-modal'));
 }
 
 /* -------------------------------------------------------------------------- */
-/* 7. License Documents Zoom Lightbox (A4 5 Documents)                        */
+/* License modal                                                              */
 /* -------------------------------------------------------------------------- */
 function initLicenseModal() {
-  const wrappers = document.querySelectorAll('.license-paper-wrapper');
   const modal = document.getElementById('license-modal');
-  const closeBtn = document.getElementById('btn-close-license-modal');
   const modalImg = document.getElementById('license-modal-img');
   const modalTitle = document.getElementById('license-modal-title');
-
   if (!modal) return;
 
-  wrappers.forEach(wrap => {
+  document.querySelectorAll('.license-paper-wrapper').forEach(wrap => {
     wrap.addEventListener('click', () => {
-      const docSrc = wrap.getAttribute('data-doc');
-      const docTitle = wrap.getAttribute('data-title');
-
-      if (modalImg) modalImg.src = docSrc || '';
-      if (modalTitle) modalTitle.textContent = docTitle || '遊漁船業者票';
-
-      modal.classList.add('active');
-      document.body.style.overflow = 'hidden';
+      const title = wrap.dataset.title || '遊漁船業者票';
+      if (modalImg) {
+        modalImg.src = wrap.dataset.doc || '';
+        modalImg.alt = title;
+      }
+      if (modalTitle) modalTitle.textContent = title;
+      openModal(modal);
     });
   });
 
-  function closeModal() {
-    modal.classList.remove('active');
-    document.body.style.overflow = '';
-  }
-
-  closeBtn?.addEventListener('click', closeModal);
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) closeModal();
-  });
+  bindModalClose(modal, document.getElementById('btn-close-license-modal'));
 }
 
 /* -------------------------------------------------------------------------- */
-/* 8. Web Reservation Form Submission & Success Modal                         */
+/* Reservation form                                                           */
 /* -------------------------------------------------------------------------- */
 function initReservationForm() {
   const form = document.getElementById('reservation-form');
   const modal = document.getElementById('form-modal');
-  const closeBtn = document.getElementById('btn-close-form-modal');
-
   if (!form || !modal) return;
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    modal.classList.add('active');
+    openModal(modal);
     form.reset();
   });
 
-  closeBtn?.addEventListener('click', () => {
-    modal.classList.remove('active');
-  });
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) modal.classList.remove('active');
-  });
+  bindModalClose(modal, document.getElementById('btn-close-form-modal'));
 }
 
 /* -------------------------------------------------------------------------- */
-/* 9. Smooth Scroll for Anchor Links                                          */
+/* Smooth scroll                                                              */
 /* -------------------------------------------------------------------------- */
 function initSmoothScroll() {
-  const internalLinks = document.querySelectorAll('a[href^="#"]');
-
-  internalLinks.forEach(link => {
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', (e) => {
       const href = link.getAttribute('href');
-      if (href === '#' || !href) return;
-
+      if (!href || href === '#') return;
       const target = document.querySelector(href);
-      if (target) {
-        e.preventDefault();
-        const headerHeight = document.querySelector('.site-header')?.offsetHeight || 70;
-        const targetPosition = target.getBoundingClientRect().top + window.scrollY - headerHeight;
+      if (!target) return;
 
-        window.scrollTo({
-          top: targetPosition,
-          behavior: 'smooth'
-        });
-      }
+      e.preventDefault();
+      const top = href === '#top' ? 0 : target.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({ top, behavior: reduceMotion ? 'auto' : 'smooth' });
     });
   });
 }
