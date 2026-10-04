@@ -4,22 +4,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>有真丸 (YUSHINMARU) | オフショアジギング・タイラバ・夜焚きイカ 遊漁船</title>
-  <meta name="description" content="遊漁船『有真丸（ゆうしんまる）』公式ウェブサイト。本格オフショアジギング・キャスティング・タイラバ・夜焚きイカメタル。個室水洗トイレ・エアコンキャビン・最新マルチビーム魚探完備。">
-  <meta name="keywords" content="有真丸, ゆうしんまる, YUSHINMARU, 遊漁船, 釣り船, ジギング, タイラバ, イカメタル, 益田港">
-  
+  <title>有真丸 (YUSHINMARU) | 島根県益田港 オフショアジギング・タイラバ・イカメタル遊漁船</title>
+  <meta name="description" content="島根県益田港出港の本格オフショア遊漁船『有真丸（ゆうしんまる）』公式ウェブサイト。ジギング・キャスティング・タイラバ・夜焚きイカメタル。最新3D魚探・個室水洗トイレ・エアコンキャビン完備。LINE・インスタグラム予約受付中。">
+  <meta name="keywords" content="有真丸, ゆうしんまる, YUSHINMARU, 遊漁船, 益田港, ジギング, ヒラマサ, タイラバ, イカメタル, 島根 釣り船">
+
   <!-- OGP Tags -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="有真丸 (YUSHINMARU) | 洗練されたモノトーン遊漁船">
-  <meta property="og:description" content="波濤を切り裂く威風堂々の船体と技。遊漁船『有真丸』。">
+  <meta property="og:title" content="有真丸 (YUSHINMARU) | 島根県益田港 オフショア遊漁船">
+  <meta property="og:description" content="波濤を切り裂く威風堂々の船体と技。遊漁船『有真丸』。最新3D魚探と快適なアメニティで至高の沖合へ。">
   <meta property="og:url" content="https://www.instagram.com/yushinmaru.jp/">
-  <meta property="og:image" content="assets/images/logo.png">
+  <meta property="og:image" content="assets/images/hero_boat.jpg">
   <meta property="og:site_name" content="有真丸 (YUSHINMARU)">
 
   <!-- Font Awesome 6 Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
-  <!-- Custom Monochromatic Black & White Style System -->
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400&family=Noto+Sans+JP:wght@400;500;700;900&family=Shippori+Mincho:wght@600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Custom Marine White & Blue Style -->
   <link rel="stylesheet" href="assets/css/style.css">
   
   <!-- Favicon -->
@@ -28,17 +33,34 @@
 <body>
 
   <!-- =================================================================== -->
-  <!-- OPENING CALLIGRAPHY SPLASH SCREEN (毛筆風 ズームアップ演出)         -->
+  <!-- OPENING SPLASH SCREEN                                               -->
   <!-- =================================================================== -->
   <div class="splash-overlay" id="splash-screen">
     <div class="splash-content">
       <div class="splash-brush-text">有 真 丸</div>
-      <div class="splash-sub-text">YUSHINMARU • SINCE 2022</div>
+      <div class="splash-sub-text">YUSHINMARU • OFFSHORE CHARTER</div>
     </div>
   </div>
 
   <!-- =================================================================== -->
-  <!-- HEADER & NAVIGATION (崩れない改行なしレイアウト)                       -->
+  <!-- TOP ANNOUNCEMENT / QUICK INFO BAR                                   -->
+  <!-- =================================================================== -->
+  <div class="top-info-bar">
+    <div class="container top-bar-flex">
+      <div class="top-bar-left">
+        <span class="badge-status"><i class="fa-solid fa-circle-dot"></i> 本日出航可能</span>
+        <span class="top-text">島根県益田港発・大型カスタム遊漁船「有真丸」ご予約・お問合せ受付中！</span>
+      </div>
+      <div class="top-bar-right">
+        <a href="tel:090-0000-0000" class="top-link-phone"><i class="fa-solid fa-phone"></i> 090-0000-0000</a>
+        <a href="#contact" class="top-link-line"><i class="fa-brands fa-line"></i> LINE公式</a>
+        <a href="https://www.instagram.com/yushinmaru.jp/" target="_blank" rel="noopener" class="top-link-ig"><i class="fa-brands fa-instagram"></i> @yushinmaru.jp</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- =================================================================== -->
+  <!-- HEADER & NAVIGATION                                                 -->
   <!-- =================================================================== -->
   <header class="site-header" id="header">
     <div class="header-container">
@@ -50,20 +72,21 @@
         </div>
       </a>
 
-      <!-- ナビゲーションメニュー (改行なし設定) -->
+      <!-- メインナビゲーション -->
       <nav class="nav-menu" aria-label="メインナビゲーション">
-        <a href="#concept" class="nav-link">CONCEPT</a>
-        <a href="#boat" class="nav-link">SPECS</a>
-        <a href="#menu" class="nav-link">MENU</a>
-        <a href="#blog" class="nav-link">BLOG <i class="fa-solid fa-arrow-up-right-from-square nav-ext-icon"></i></a>
-        <a href="#access" class="nav-link">ACCESS</a>
+        <a href="#concept" class="nav-link"><i class="fa-solid fa-user-astronaut"></i> 自己紹介</a>
+        <a href="#boat" class="nav-link"><i class="fa-solid fa-ship"></i> 船の紹介</a>
+        <a href="#menu" class="nav-link"><i class="fa-solid fa-tags"></i> 料金内容</a>
+        <a href="#catch" class="nav-link"><i class="fa-solid fa-fish"></i> 釣果等</a>
+        <a href="#contact" class="nav-link"><i class="fa-solid fa-paper-plane"></i> 予約お問合せ</a>
+        <a href="#license" class="nav-link"><i class="fa-solid fa-certificate"></i> 遊漁船業者票</a>
+        <a href="#access" class="nav-link"><i class="fa-solid fa-location-dot"></i> アクセス</a>
       </nav>
 
       <div class="header-actions">
-        <!-- インスタへの誘導ボタン -->
-        <a href="https://www.instagram.com/yushinmaru.jp/" target="_blank" rel="noopener" class="btn-header-ig">
-          <i class="fa-brands fa-instagram"></i>
-          <span>Instagram</span>
+        <a href="#contact" class="btn-header-reserve">
+          <i class="fa-brands fa-line"></i>
+          <span>LINE・WEB予約</span>
         </a>
         <button class="mobile-nav-toggle" aria-label="メニューを開く">
           <i class="fa-solid fa-bars-staggered"></i>
@@ -85,13 +108,18 @@
       </button>
     </div>
     <ul class="mobile-nav-list">
-      <li><a href="#concept" class="mobile-nav-link"><i class="fa-solid fa-user-astronaut"></i> CONCEPT（自己紹介・理念）</a></li>
-      <li><a href="#boat" class="mobile-nav-link"><i class="fa-solid fa-ship"></i> SPECS（船の装備）</a></li>
-      <li><a href="#menu" class="mobile-nav-link"><i class="fa-solid fa-list-check"></i> MENU（メニュー・料金）</a></li>
-      <li><a href="#blog" class="mobile-nav-link"><i class="fa-solid fa-blog"></i> BLOG（釣果ブログ外部サイト）</a></li>
-      <li><a href="#access" class="mobile-nav-link"><i class="fa-solid fa-location-dot"></i> ACCESS（集合港アクセス）</a></li>
+      <li><a href="#concept" class="mobile-nav-link"><i class="fa-solid fa-user-astronaut"></i> 自己紹介・船長理念</a></li>
+      <li><a href="#boat" class="mobile-nav-link"><i class="fa-solid fa-ship"></i> 船の紹介・最新装備</a></li>
+      <li><a href="#menu" class="mobile-nav-link"><i class="fa-solid fa-tags"></i> 料金内容・プラン一覧</a></li>
+      <li><a href="#catch" class="mobile-nav-link"><i class="fa-solid fa-fish"></i> 釣果ギャラリー・ターゲット</a></li>
+      <li><a href="#contact" class="mobile-nav-link"><i class="fa-solid fa-paper-plane"></i> 予約お問い合わせ (LINE/インスタ)</a></li>
+      <li><a href="#license" class="mobile-nav-link"><i class="fa-solid fa-certificate"></i> 遊漁船業者票 (標識A4 5枚)</a></li>
+      <li><a href="#access" class="mobile-nav-link"><i class="fa-solid fa-location-dot"></i> 集合港アクセス・MAP</a></li>
     </ul>
     <div class="drawer-footer-action">
+      <a href="#contact" class="btn-drawer-line">
+        <i class="fa-brands fa-line"></i> LINEでかんたん予約
+      </a>
       <a href="https://www.instagram.com/yushinmaru.jp/" target="_blank" rel="noopener" class="btn-drawer-ig">
         <i class="fa-brands fa-instagram"></i> Instagram (@yushinmaru.jp)
       </a>
@@ -99,7 +127,7 @@
   </aside>
 
   <!-- =================================================================== -->
-  <!-- HERO SECTION (有真丸動画・スクロール連動ビデオヒーロー)               -->
+  <!-- HERO SECTION                                                        -->
   <!-- =================================================================== -->
   <section class="hero-section" id="hero">
     <div class="hero-video-wrapper">
@@ -112,275 +140,794 @@
 
     <div class="container">
       <div class="hero-content">
-        <img src="assets/images/logo.png" alt="有真丸 公式ロゴシンボル" class="hero-logo-emblem">
+        <div class="hero-emblem-wrap">
+          <img src="assets/images/logo.png" alt="有真丸 公式ロゴシンボル" class="hero-logo-emblem">
+          <span class="hero-badge">YUSHINMARU OFFSHORE CHARTER</span>
+        </div>
 
         <h1 class="hero-headline">
-          波濤を切り裂き、<br>
-          <span class="highlight-yellow">至高の沖合へ。</span>
+          大海原を駆け抜け、<br>
+          <span class="highlight-cyan">至高の感動の一尾へ。</span>
         </h1>
         
         <p class="hero-subtext">
-          漆黒の大海原へ挑む、本格オフショア遊漁船『有真丸』。<br>
+          島根県益田港発、本格オフショア遊漁船『有真丸』。<br>
           大物ジギング・キャスティング・タイラバ・夜焚きイカメタル。<br>
-          圧倒的なパフォーマンスと快適な船内環境で、忘れえぬ感動のひとときを。
+          最新3Dマルチビーム魚探と快適なアメニティで、忘れえぬオフショア体験をお届けします。
         </p>
 
         <div class="hero-pills">
-          <div class="pill-item"><i class="fa-solid fa-bolt"></i> 巡航30ノット・駿足移動</div>
-          <div class="pill-item"><i class="fa-solid fa-compass"></i> 最新3Dマルチビーム魚探</div>
+          <div class="pill-item"><i class="fa-solid fa-bolt"></i> 巡航30ノット・高速移動</div>
+          <div class="pill-item"><i class="fa-solid fa-compass"></i> 最新FURUNO 3Dマルチビーム魚探</div>
           <div class="pill-item"><i class="fa-solid fa-restroom"></i> 個室水洗トイレ完備</div>
-          <div class="pill-item"><i class="fa-solid fa-snowflake"></i> 冷暖房キャビン完備</div>
+          <div class="pill-item"><i class="fa-solid fa-snowflake"></i> 冷暖房エアコンキャビン</div>
         </div>
 
         <div class="hero-cta-group">
-          <a href="https://www.instagram.com/yushinmaru.jp/" target="_blank" rel="noopener" class="btn-hero-ig">
-            <i class="fa-brands fa-instagram"></i>
-            <span>公式 Instagram を見る</span>
+          <a href="#contact" class="btn-hero-main">
+            <i class="fa-brands fa-line"></i>
+            <span>LINE・インスタで予約する</span>
           </a>
-          <a href="#blog" class="btn-hero-blog">
-            <i class="fa-solid fa-book-open"></i>
-            <span>最新釣果ブログ（外部サイト）</span>
+          <a href="#menu" class="btn-hero-sub">
+            <i class="fa-solid fa-list"></i>
+            <span>料金・プランを見る</span>
           </a>
         </div>
       </div>
     </div>
 
     <div class="scroll-down-indicator">
-      <span class="scroll-text">SCROLL</span>
+      <span class="scroll-text">SCROLL DOWN</span>
       <div class="scroll-line"></div>
     </div>
   </section>
 
   <main>
     <!-- =================================================================== -->
-    <!-- CONCEPT & CAPTAIN PROFILE SECTION (自己紹介・理念)                 -->
+    <!-- 1. 自己紹介 (CONCEPT & CAPTAIN PROFILE)                              -->
     <!-- =================================================================== -->
     <section class="concept-section" id="concept">
       <div class="container">
         <div class="section-header">
-          <span class="section-subtitle">ABOUT & CAPTAIN</span>
-          <h2 class="section-title">自己紹介 <span>＆ 理念</span></h2>
+          <span class="section-subtitle">01. ABOUT & CAPTAIN</span>
+          <h2 class="section-title">自己紹介 <span>＆ 船長理念</span></h2>
+          <p class="section-lead-desc">一対一の誠実なサポートと安全運行で、初心者からベテランまで笑顔あふれる一日を。</p>
         </div>
 
         <div class="captain-card-wrapper">
           <div class="captain-img-box">
             <img src="assets/images/captain.jpg" alt="有真丸 船長写真">
-            <div class="captain-badge">CAPTAIN PROFILE</div>
+            <div class="captain-badge"><i class="fa-solid fa-anchor"></i> 船長 PROFILE</div>
           </div>
           <div class="captain-info">
-            <span class="captain-sub-title">YUSHINMARU CAPTAIN</span>
-            <h3 class="captain-name">有真丸 船長</h3>
+            <div class="captain-header-text">
+              <span class="captain-sub-title">遊漁船 有真丸 代表・船長</span>
+              <h3 class="captain-name">有真丸 船長 <span>（YUSHINMARU CAPTAIN）</span></h3>
+              <div class="captain-tags">
+                <span class="cap-tag"><i class="fa-solid fa-certificate"></i> 一級小型船舶操縦士</span>
+                <span class="cap-tag"><i class="fa-solid fa-shield"></i> 特定操縦免許所持</span>
+                <span class="cap-tag"><i class="fa-solid fa-heart-pulse"></i> 応急救護講習受講済</span>
+              </div>
+            </div>
+
             <p class="captain-bio">
-              「最高の思い出と感動をすべてのアングラーに」をモットーに、島根県益田沖の豊かなフィールドをご案内しております。<br>
-              最新3Dマルチビームソナーを駆使した的確なポイント選定と、初心者の方にも親身に対応するレクチャーを徹底。安全第一で快適なオフショア体験をご提供いたします。
+              「すべてのアングラーに、最高の思い出と最高の笑顔を」を信条に、島根県益田沖の豊かなフィールドをご案内しております。<br>
+              潮流や海底地形を立体的に把握できる最新3Dマルチビームソナーを駆使し、常に最適なポイントへ正確にご案内いたします。<br>
+              初めてオフショア釣りに挑戦される方やご家族連れの方にも、仕掛けのセットからオマツリ解き、タモ入れまで親切丁寧にサポートいたします。
             </p>
+
             <div class="captain-features">
               <div class="cap-feat-item">
-                <i class="fa-solid fa-shield-halved"></i>
+                <div class="feat-icon"><i class="fa-solid fa-shield-halved"></i></div>
                 <div>
-                  <strong>安全運行・親切レクチャー</strong>
-                  <p>仕掛けの準備からタモ入れまでしっかりサポートします。</p>
+                  <strong>安全運行・親切丁寧なレクチャー</strong>
+                  <p>無理な出航は絶対に行わず安全第一。シャクリ方やタナ合わせも優しくお教えします。</p>
                 </div>
               </div>
               <div class="cap-feat-item">
-                <i class="fa-solid fa-fish-fins"></i>
+                <div class="feat-icon"><i class="fa-solid fa-fish-fins"></i></div>
                 <div>
-                  <strong>鮮度を極める血抜き・神経締め</strong>
-                  <p>釣れた大切な獲物は船長が丁寧かつ手早く処理します。</p>
+                  <strong>鮮度を極める血抜き・神経締め対応</strong>
+                  <p>釣れた大切な獲物は船長が丁寧かつ迅速に処置。最高の状態でお持ち帰りいただけます。</p>
+                </div>
+              </div>
+              <div class="cap-feat-item">
+                <div class="feat-icon"><i class="fa-solid fa-face-smile-beam"></i></div>
+                <div>
+                  <strong>初心者・女性・ファミリー歓迎</strong>
+                  <p>清潔な個室水洗トイレとエアコンキャビンを完備。どなたでも快適にご乗船いただけます。</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
+        <!-- 3 Pillars Cards -->
         <div class="concept-grid">
           <article class="concept-card">
             <div class="concept-icon"><i class="fa-solid fa-crosshairs"></i></div>
             <h3 class="concept-card-title">最新3D魚探ナビゲーション</h3>
-            <p class="concept-card-desc">最新3Dマルチビーム魚探を駆使し、潮流と海底地形を立体解析してポイントへ案内。</p>
+            <p class="concept-card-desc">最新3Dマルチビーム魚探により、海底地形と魚影を3次元でリアルタイム解析。的確なポイントアプローチを実現します。</p>
           </article>
 
           <article class="concept-card">
             <div class="concept-icon"><i class="fa-solid fa-sparkles"></i></div>
-            <h3 class="concept-card-title">充実した快適アメニティ</h3>
-            <p class="concept-card-desc">個室水洗トイレ、エアコンキャビン完備。女性やお子様も快適に過ごせます。</p>
+            <h3 class="concept-card-title">快適アメニティ完備</h3>
+            <p class="concept-card-desc">女性やお子様も安心の完全個室水洗トイレ、移動中も快適に過ごせる冷暖房エアコンキャビン、ポット・電子レンジを備えています。</p>
           </article>
 
           <article class="concept-card">
-            <div class="concept-icon"><i class="fa-solid fa-handshake"></i></div>
-            <h3 class="concept-card-title">初心者・女性歓迎</h3>
-            <p class="concept-card-desc">タックルセッティングからシャクリ方まで丁寧にアドバイス。手ぶら参加もOK。</p>
+            <div class="concept-icon"><i class="fa-solid fa-handshake-angle"></i></div>
+            <h3 class="concept-card-title">フルサポート＆手ぶらOK</h3>
+            <p class="concept-card-desc">レンタルタックル完備。タックルのセッティングからルアー選定、ノット結び直しまで手厚くフォローします。</p>
           </article>
         </div>
       </div>
     </section>
 
     <!-- =================================================================== -->
-    <!-- BOAT SPECS SECTION (船の装備)                                       -->
+    <!-- 2. 船の紹介 (BOAT SPECS & EQUIPMENT)                                -->
     <!-- =================================================================== -->
     <section class="boat-section" id="boat">
       <div class="container">
         <div class="section-header">
-          <span class="section-subtitle">VESSEL SPECS & EQUIPMENT</span>
-          <h2 class="section-title">船の <span>装備・艇格</span></h2>
+          <span class="section-subtitle">02. VESSEL SPECS & EQUIPMENT</span>
+          <h2 class="section-title">船の <span>紹介・最新装備</span></h2>
+          <p class="section-lead-desc">大型48ftカスタム遊漁船。高速巡航性能と最先端の釣獲・快適設備を誇ります。</p>
         </div>
 
         <div class="boat-showcase-wrapper">
           <div class="boat-media-box">
-            <img src="assets/images/hero_boat.jpg" alt="有真丸 船体">
+            <img src="assets/images/hero_boat.jpg" alt="有真丸 船体外観">
             <div class="boat-badge-overlay">
               <div class="boat-badge-name">有真丸 (YUSHINMARU)</div>
-              <div class="boat-badge-sub">大型カスタム遊漁船（全長48ft）</div>
+              <div class="boat-badge-sub">大型カスタムオフショア遊漁船（全長48ft）</div>
             </div>
+            <button class="btn-play-boat-video" id="btn-open-boat-video">
+              <i class="fa-solid fa-play"></i> 船内・動画を見る
+            </button>
           </div>
 
           <div class="boat-specs-content">
-            <table class="boat-specs-table">
-              <tbody>
-                <tr>
-                  <th>船体規格</th>
-                  <td>大型カスタム遊漁船（全長 48フィート）</td>
-                </tr>
-                <tr>
-                  <th>乗船定員</th>
-                  <td>12名（乗合は最大10名まで広々キャスト可能）</td>
-                </tr>
-                <tr>
-                  <th>航海速度</th>
-                  <td>最高 30ノット（ポイント到着まで超スピーディ）</td>
-                </tr>
-                <tr>
-                  <th>探知計器</th>
-                  <td>FURUNO 3Dマルチビームソナー / HONDEXカラー魚探 / 高性能レーダー</td>
-                </tr>
-                <tr>
-                  <th>キャビン設備</th>
-                  <td>冷暖房完備キャビン / 個室水洗トイレ / 電子レンジ / ポット</td>
-                </tr>
-                <tr>
-                  <th>デッキ設備</th>
-                  <td>全座席電動リール用電源（12V/24V） / ロッドホルダー / 海水循環パイプ</td>
-                </tr>
-              </tbody>
-            </table>
+            <h3 class="specs-heading"><i class="fa-solid fa-clipboard-list"></i> 有真丸 艇格・主要諸元</h3>
+            <div class="table-responsive">
+              <table class="boat-specs-table">
+                <tbody>
+                  <tr>
+                    <th><i class="fa-solid fa-ship"></i> 船体規格</th>
+                    <td>大型カスタム遊漁船（全長 48フィート / 全幅 約3.8m）</td>
+                  </tr>
+                  <tr>
+                    <th><i class="fa-solid fa-users"></i> 乗船定員</th>
+                    <td>12名（安全と広いキャストスペース確保のため乗合は最大10名様まで）</td>
+                  </tr>
+                  <tr>
+                    <th><i class="fa-solid fa-gauge-high"></i> 航海速度</th>
+                    <td>最高 30ノット / 巡航 24〜26ノット（沖合ポイントまで快適スピーディ）</td>
+                  </tr>
+                  <tr>
+                    <th><i class="fa-solid fa-satellite-dish"></i> 探知計器</th>
+                    <td>FURUNO 3Dマルチビームソナー / HONDEXカラー魚探 / 高性能デジタルレーダー / GPSプロッター</td>
+                  </tr>
+                  <tr>
+                    <th><i class="fa-solid fa-couch"></i> キャビン設備</th>
+                    <td>完全個室水洗トイレ / 冷暖房完備キャビン / 電子レンジ / 湯沸かしポット / フルセグTV / ソファー席</td>
+                  </tr>
+                  <tr>
+                    <th><i class="fa-solid fa-plug"></i> デッキ設備</th>
+                    <td>全座席電動リール用電源（12V/24V対応） / ステンレス製ロッドホルダー / 海水循環パイプ / イケス完備</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
 
+            <!-- Equipment Feature Cards Grid -->
             <div class="equipment-grid">
-              <div class="equip-item"><i class="fa-solid fa-restroom"></i> 個室水洗トイレ</div>
-              <div class="equip-item"><i class="fa-solid fa-snowflake"></i> 冷暖房キャビン</div>
-              <div class="equip-item"><i class="fa-solid fa-plug"></i> 全席リール電源</div>
-              <div class="equip-item"><i class="fa-solid fa-life-ring"></i> 無料ライフジャケット</div>
+              <div class="equip-item">
+                <i class="fa-solid fa-restroom"></i>
+                <div class="equip-text">
+                  <strong>完全個室水洗トイレ</strong>
+                  <span>清潔で匂いのない明るい洋式トイレ</span>
+                </div>
+              </div>
+              <div class="equip-item">
+                <i class="fa-solid fa-snowflake"></i>
+                <div class="equip-text">
+                  <strong>冷暖房キャビン</strong>
+                  <span>夏も冬も快適に休息・移動できます</span>
+                </div>
+              </div>
+              <div class="equip-item">
+                <i class="fa-solid fa-plug"></i>
+                <div class="equip-text">
+                  <strong>全座席電動電源</strong>
+                  <span>12V/24Vリール用端子を全席配置</span>
+                </div>
+              </div>
+              <div class="equip-item">
+                <i class="fa-solid fa-life-ring"></i>
+                <div class="equip-text">
+                  <strong>無料救命胴衣</strong>
+                  <span>桜マーク付き最新ライフジャケット完備</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- Video Modal for Boat -->
+    <div class="video-modal-overlay" id="boat-video-modal">
+      <div class="video-modal-content">
+        <button class="video-modal-close" id="btn-close-boat-video"><i class="fa-solid fa-xmark"></i></button>
+        <div class="video-container">
+          <video controls id="boat-modal-video">
+            <source src="assets/images/海の動画.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+
     <!-- =================================================================== -->
-    <!-- MENU & RATES SECTION (メニュー)                                    -->
+    <!-- 3. 料金内容 (PRICING & PLANS)                                       -->
     <!-- =================================================================== -->
     <section class="menu-section" id="menu">
       <div class="container">
         <div class="section-header">
-          <span class="section-subtitle">FISHING MENU & RATES</span>
-          <h2 class="section-title">メニュー <span>・ プラン一覧</span></h2>
+          <span class="section-subtitle">03. MENU & RATES</span>
+          <h2 class="section-title">料金内容 <span>・ プラン一覧</span></h2>
+          <p class="section-lead-desc">季節とターゲットに応じた明朗な料金プラン。手ぶらレンタルや貸切チャーターも対応。</p>
         </div>
 
         <div class="menu-grid">
-          <!-- Menu Item 1 -->
-          <article class="menu-card">
+          <!-- Plan 1 -->
+          <article class="menu-card highlighted">
+            <div class="menu-card-badge">一番人気</div>
             <div class="menu-card-img">
-              <img src="assets/images/jigging.jpg" alt="ジギング">
-              <span class="menu-tag">人気 No.1</span>
+              <img src="assets/images/jigging.jpg" alt="ジギング・キャスティング便">
+              <span class="menu-tag"><i class="fa-solid fa-bolt"></i> 年間通しプラン</span>
             </div>
             <div class="menu-card-body">
               <h3 class="menu-title">オフショアジギング・キャスティング便</h3>
-              <p class="menu-target"><i class="fa-solid fa-fish"></i> ターゲット：ヒラマサ・ブリ・カンパチ</p>
+              <p class="menu-target"><i class="fa-solid fa-fish-fins"></i> ターゲット：ヒラマサ・ブリ・カンパチ・ハガツオ</p>
+              <p class="menu-desc">益田沖のヒラマサ・青物を狙う大人気コース。水深30m〜100mのポイントを最新魚探でダイレクト攻略。</p>
               <div class="menu-price-box">
                 <span class="menu-price">¥13,000</span>
                 <span class="menu-unit">（税込 / 1名様）</span>
               </div>
+              <ul class="menu-details-list">
+                <li><i class="fa-solid fa-check"></i> 出航時間：6:00出航 〜 15:00帰港予定</li>
+                <li><i class="fa-solid fa-check"></i> 乗合人数：最少4名様より出航</li>
+                <li><i class="fa-solid fa-check"></i> 氷サービス・血抜き付き</li>
+              </ul>
+              <a href="#contact" class="btn-card-reserve"><i class="fa-brands fa-line"></i> このプランで予約</a>
             </div>
           </article>
 
-          <!-- Menu Item 2 -->
+          <!-- Plan 2 -->
           <article class="menu-card">
             <div class="menu-card-img">
-              <img src="assets/images/tairaba.jpg" alt="タイラバ">
-              <span class="menu-tag">高級魚狙い</span>
+              <img src="assets/images/tairaba.jpg" alt="タイラバ・SLJ便">
+              <span class="menu-tag"><i class="fa-solid fa-crown"></i> 高級魚狙い</span>
             </div>
             <div class="menu-card-body">
               <h3 class="menu-title">タイラバ・SLJ・ティップラン便</h3>
-              <p class="menu-target"><i class="fa-solid fa-fish"></i> ターゲット：マダイ・アコウ・アオハタ・アオリイカ</p>
+              <p class="menu-target"><i class="fa-solid fa-fish-fins"></i> ターゲット：マダイ・アコウ・アオハタ・アオリイカ</p>
+              <p class="menu-desc">初心者や女性にもおすすめのライトゲーム。大真鯛や高級根魚アコウ、秋のアオリイカを狙います。</p>
               <div class="menu-price-box">
                 <span class="menu-price">¥12,000</span>
                 <span class="menu-unit">（税込 / 1名様）</span>
               </div>
+              <ul class="menu-details-list">
+                <li><i class="fa-solid fa-check"></i> 出航時間：6:30出航 〜 14:30帰港予定</li>
+                <li><i class="fa-solid fa-check"></i> 初心者レクチャー無料</li>
+                <li><i class="fa-solid fa-check"></i> 氷サービス付き</li>
+              </ul>
+              <a href="#contact" class="btn-card-reserve"><i class="fa-brands fa-line"></i> このプランで予約</a>
             </div>
           </article>
 
-          <!-- Menu Item 3 -->
+          <!-- Plan 3 -->
           <article class="menu-card">
             <div class="menu-card-img">
-              <img src="assets/images/squid.jpg" alt="夜焚きイカ">
-              <span class="menu-tag">夏〜秋限定</span>
+              <img src="assets/images/squid.jpg" alt="夜焚きイカメタル便">
+              <span class="menu-tag"><i class="fa-solid fa-moon"></i> 夏〜秋限定</span>
             </div>
             <div class="menu-card-body">
               <h3 class="menu-title">夜焚きケンサキイカメタル便</h3>
-              <p class="menu-target"><i class="fa-solid fa-fish"></i> ターゲット：ケンサキイカ・ヤリイカ</p>
+              <p class="menu-target"><i class="fa-solid fa-fish-fins"></i> ターゲット：ケンサキイカ・ヤリイカ・ブドウイカ</p>
+              <p class="menu-desc">集魚灯を焚いて幻想的な夜の海でパラソル級ケンサキイカを狙う夏の風物詩。快適集魚灯完備。</p>
               <div class="menu-price-box">
                 <span class="menu-price">¥11,000</span>
                 <span class="menu-unit">（税込 / 1名様）</span>
               </div>
+              <ul class="menu-details-list">
+                <li><i class="fa-solid fa-check"></i> 出航時間：17:30集合 〜 23:30納竿</li>
+                <li><i class="fa-solid fa-check"></i> イカ用ジップロック・氷準備あり</li>
+                <li><i class="fa-solid fa-check"></i> 全席電動リール電源完備</li>
+              </ul>
+              <a href="#contact" class="btn-card-reserve"><i class="fa-brands fa-line"></i> このプランで予約</a>
             </div>
           </article>
 
-          <!-- Menu Item 4 -->
-          <article class="menu-card">
+          <!-- Plan 4 -->
+          <article class="menu-card charter-card">
             <div class="menu-card-img">
-              <img src="assets/images/hero_boat.jpg" alt="貸切チャーター">
-              <span class="menu-tag">グループ貸切</span>
+              <img src="assets/images/hero_boat.jpg" alt="完全貸切チャーター便">
+              <span class="menu-tag"><i class="fa-solid fa-users"></i> グループ完全貸切</span>
             </div>
             <div class="menu-card-body">
-              <h3 class="menu-title">1船チャーター（完全貸切仕立て便）</h3>
-              <p class="menu-target"><i class="fa-solid fa-users"></i> 8名様まで（1名追加 +¥10,000）</p>
+              <h3 class="menu-title">1船完全仕立てチャーター便</h3>
+              <p class="menu-target"><i class="fa-solid fa-users-gear"></i> 仲間内・ファミリーで船全体を独占</p>
+              <p class="menu-desc">仲間同士で気兼ねなく釣りを楽しめる完全チャーター。釣りものの組み合わせや出港時間も柔軟に対応いたします。</p>
               <div class="menu-price-box">
                 <span class="menu-price">¥80,000〜</span>
-                <span class="menu-unit">（税込）</span>
+                <span class="menu-unit">（税込 / 8名様まで）</span>
               </div>
+              <ul class="menu-details-list">
+                <li><i class="fa-solid fa-check"></i> 8名様まで基本料金（1名追加 +¥10,000）</li>
+                <li><i class="fa-solid fa-check"></i> ジギング＆タイラバのリレー便も可能</li>
+                <li><i class="fa-solid fa-check"></i> 企業イベント・撮影利用も歓迎</li>
+              </ul>
+              <a href="#contact" class="btn-card-reserve"><i class="fa-brands fa-line"></i> チャーターを相談する</a>
+            </div>
+          </article>
+        </div>
+
+        <!-- Rental & Option Table Box -->
+        <div class="options-box">
+          <div class="options-header">
+            <h3><i class="fa-solid fa-gear"></i> レンタルタックル ＆ サービス案内</h3>
+          </div>
+          <div class="options-grid">
+            <div class="option-card">
+              <div class="opt-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+              <h4>タックルレンタル</h4>
+              <p class="opt-price">¥2,000 <span>/ 1セット（竿・リール・PEライン込）</span></p>
+              <p class="opt-note">※ジギング・タイラバ・イカメタル用それぞれご用意。仕掛け・ルアーは店頭または船内購入可。</p>
+            </div>
+
+            <div class="option-card">
+              <div class="opt-icon"><i class="fa-solid fa-cubes-stacked"></i></div>
+              <h4>氷サービス ＆ 魚処理</h4>
+              <p class="opt-price">無料サービス</p>
+              <p class="opt-note">乗船時にお渡しする氷は無料。釣れた魚は船長が血抜き・神経締めを丁寧に行います。</p>
+            </div>
+
+            <div class="option-card">
+              <div class="opt-icon"><i class="fa-solid fa-credit-card"></i></div>
+              <h4>お支払い方法</h4>
+              <p class="opt-price">現金 / PayPay / クレジット</p>
+              <p class="opt-note">下船時に港にてお支払いとなります。キャッシュレス決済対応。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- 4. 釣果等 (CATCH GALLERY & SEASONAL TARGETS)                         -->
+    <!-- =================================================================== -->
+    <section class="catch-section" id="catch">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle">04. CATCH & NEWS</span>
+          <h2 class="section-title">釣果等 <span>＆ ターゲット</span></h2>
+          <p class="section-lead-desc">有真丸でキャッチされた最新の釣果実績と、四季折々の狙い目魚種カレンダー。</p>
+        </div>
+
+        <!-- Filter Buttons (Hayama Moments style) -->
+        <div class="catch-filter-bar">
+          <button class="filter-btn active" data-filter="all">ALL (すべて)</button>
+          <button class="filter-btn" data-filter="jigging">ヒラマサ・青物ジギング</button>
+          <button class="filter-btn" data-filter="tairaba">タイラバ・マダイ</button>
+          <button class="filter-btn" data-filter="squid">ケンサキイカメタル</button>
+        </div>
+
+        <!-- Catch Moments Photo Grid -->
+        <div class="catch-grid" id="catch-grid">
+          <!-- Item 1 -->
+          <article class="catch-card" data-category="jigging">
+            <div class="catch-img-box">
+              <img src="assets/images/jigging.jpg" alt="12kgオーバー特大ヒラマサ">
+              <span class="catch-date-tag">2026.10.02</span>
+              <span class="catch-category-tag">ジギング便</span>
+            </div>
+            <div class="catch-info-box">
+              <h3 class="catch-title">12.5kg 大型ヒラマサキャッチ！</h3>
+              <p class="catch-specs"><i class="fa-solid fa-fish"></i> ヒラマサ 108cm / 12.5kg （水深65m ポイント）</p>
+              <p class="catch-comment">強烈な引きをいなして見事キャッチ！秋のハイシーズン開幕です。</p>
+            </div>
+          </article>
+
+          <!-- Item 2 -->
+          <article class="catch-card" data-category="tairaba">
+            <div class="catch-img-box">
+              <img src="assets/images/tairaba.jpg" alt="80cm大真鯛キャッチ">
+              <span class="catch-date-tag">2026.09.28</span>
+              <span class="catch-category-tag">タイラバ便</span>
+            </div>
+            <div class="catch-info-box">
+              <h3 class="catch-title">82cm 綺麗で立派な大真鯛！</h3>
+              <p class="catch-specs"><i class="fa-solid fa-fish"></i> マダイ 82cm / アコウ 45cm 多数</p>
+              <p class="catch-comment">タイラバ120gオレンジ系で好反応。根魚も良型が連発しました！</p>
+            </div>
+          </article>
+
+          <!-- Item 3 -->
+          <article class="catch-card" data-category="squid">
+            <div class="catch-img-box">
+              <img src="assets/images/squid.jpg" alt="夜焚きイカ爆釣">
+              <span class="catch-date-tag">2026.09.15</span>
+              <span class="catch-category-tag">イカメタル便</span>
+            </div>
+            <div class="catch-info-box">
+              <h3 class="catch-title">大剣パラソル級ケンサキイカ連発！</h3>
+              <p class="catch-specs"><i class="fa-solid fa-fish"></i> ケンサキイカ トップ78杯 （胴長45cm級多数）</p>
+              <p class="catch-comment">点灯後すぐにタナが上がり怒涛の連続ヒット！船中笑顔が絶えませんでした。</p>
+            </div>
+          </article>
+
+          <!-- Item 4 -->
+          <article class="catch-card" data-category="jigging">
+            <div class="catch-img-box">
+              <img src="assets/images/hero_boat.jpg" alt="有真丸 ジギング出航">
+              <span class="catch-date-tag">2026.09.08</span>
+              <span class="catch-category-tag">ジギング便</span>
+            </div>
+            <div class="catch-info-box">
+              <h3 class="catch-title">ブリ・ワラサ爆釣＆ヒラマサ全員キャッチ！</h3>
+              <p class="catch-specs"><i class="fa-solid fa-fish"></i> ブリ 85〜95cm 15本 / ヒラマサ 7本</p>
+              <p class="catch-comment">潮流が差し込み鳥山発生！ワンピッチジャークで怒涛のフィーバー。</p>
+            </div>
+          </article>
+        </div>
+
+        <!-- Catch Calendar Table -->
+        <div class="seasonal-calendar-box">
+          <div class="calendar-header">
+            <h3><i class="fa-solid fa-calendar-days"></i> 年間ターゲット魚種カレンダー</h3>
+          </div>
+          <div class="calendar-grid">
+            <div class="cal-season-item">
+              <span class="season-badge spring">春 (3月〜5月)</span>
+              <h4>乗っ込み大真鯛 ＆ 春ヒラマサ</h4>
+              <p>産卵を控えた大型マダイ（タイラバ）と、浅場で暴れ回る春の大型ヒラマサ（ジギング）が狙い目！</p>
+            </div>
+            <div class="cal-season-item">
+              <span class="season-badge summer">夏 (6月〜8月)</span>
+              <h4>夜焚きイカメタル ＆ 根魚ロック</h4>
+              <p>夏の風物詩ケンサキイカ！手軽で奥深いイカメタル便。日中は高級アコウ・キジハタなどの根魚ターゲット。</p>
+            </div>
+            <div class="cal-season-item">
+              <span class="season-badge autumn">秋 (9月〜11月)</span>
+              <h4>秋の青物爆釣 ＆ ティップラン</h4>
+              <p>数釣り・型ともに狙える青物ベストシーズン！数・型が狙えるティップランアオリイカも大好評。</p>
+            </div>
+            <div class="cal-season-item">
+              <span class="season-badge winter">冬 (12月〜2月)</span>
+              <h4>寒ブリ ＆ 寒ヒラマサ</h4>
+              <p>脂がノリにノった極上寒ブリ・寒ヒラマサ！一撃必殺の大物を目指して沖合へアタック。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Blog External Banner -->
+        <div class="blog-banner-card">
+          <div class="blog-banner-content">
+            <div class="blog-icon"><i class="fa-solid fa-blog"></i></div>
+            <div class="blog-text">
+              <span class="blog-sub">DAILY CATCH REPORT & SCHEDULE</span>
+              <h3 class="blog-title">毎日の最新釣果速報＆出船スケジュールは公式アメブロへ</h3>
+              <p class="blog-desc">毎出航の詳しいヒットジグ、ヒットカラー、潮流状況、出航予約カレンダーをブログにて随時更新中！</p>
+            </div>
+            <a href="https://ameblo.jp" target="_blank" rel="noopener" class="btn-blog-external">
+              <span>公式ブログを見る (外部サイト)</span>
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lightbox Modal for Catch Cards -->
+    <div class="catch-modal-overlay" id="catch-lightbox">
+      <div class="catch-modal-card">
+        <button class="catch-modal-close" id="btn-close-catch-modal"><i class="fa-solid fa-xmark"></i></button>
+        <img id="catch-modal-img" src="" alt="釣果写真">
+        <div class="catch-modal-body">
+          <span id="catch-modal-category" class="catch-category-tag"></span>
+          <h3 id="catch-modal-title"></h3>
+          <p id="catch-modal-specs" style="font-weight:700; color:var(--primary-blue);"></p>
+          <p id="catch-modal-comment" style="margin-top:0.5rem;"></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- =================================================================== -->
+    <!-- 5. 予約お問い合わせ (RESERVATION & INQUIRY: LINE & INSTAGRAM QR)       -->
+    <!-- =================================================================== -->
+    <section class="contact-section" id="contact">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle">05. RESERVATION & INQUIRY</span>
+          <h2 class="section-title">予約 <span>・ お問い合わせ</span></h2>
+          <p class="section-lead-desc">LINE公式アカウント・Instagram QRコード・お電話・Webフォームより簡単に予約できます。</p>
+        </div>
+
+        <!-- Workflow 4 steps -->
+        <div class="workflow-wrapper">
+          <h3 class="workflow-title"><i class="fa-solid fa-route"></i> 乗船・ご予約までの流れ</h3>
+          <div class="workflow-grid">
+            <div class="wf-step">
+              <div class="wf-num">STEP 01</div>
+              <h4>空き状況のご確認</h4>
+              <p>LINE・インスタ・お電話またはWebフォームよりご希望の日時・人数をお伝えください。</p>
+            </div>
+            <div class="wf-step">
+              <div class="wf-num">STEP 02</div>
+              <h4>ご予約確定</h4>
+              <p>船長より空き状況と注意事項をご連絡し、予約完了となります。（キャンセル規定適用）</p>
+            </div>
+            <div class="wf-step">
+              <div class="wf-num">STEP 03</div>
+              <h4>前日確認のお電話</h4>
+              <p>出航前日の夕方（17:00〜19:00）に海況判断と集合時間確定の確認電話を差し上げます。</p>
+            </div>
+            <div class="wf-step">
+              <div class="wf-num">STEP 04</div>
+              <h4>当日集合・出港！</h4>
+              <p>出港の30分前までに益田港へ集合。受付・乗船名簿ご記入の上出航となります。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Prominent QR Code Displays (Required feature: LINE & Instagram QR attachment) -->
+        <div class="qr-code-showcase-grid">
+          <!-- LINE QR Box -->
+          <div class="qr-card line-qr-card">
+            <div class="qr-badge line-badge"><i class="fa-brands fa-line"></i> LINE公式</div>
+            <div class="qr-image-wrapper">
+              <img src="assets/images/line_qr.jpg" alt="有真丸 公式LINE QRコード">
+              <div class="qr-scan-hint"><i class="fa-solid fa-qrcode"></i> スマホで読み取り</div>
+            </div>
+            <div class="qr-content">
+              <h3>有真丸 LINE公式アカウント</h3>
+              <p class="qr-desc">24時間いつでも出船確認・チャット予約が可能！友達追加で最新空き情報をお知らせします。</p>
+              <a href="https://line.me/" target="_blank" rel="noopener" class="btn-qr-action line-btn">
+                <i class="fa-brands fa-line"></i> LINEで予約・質問する
+              </a>
+            </div>
+          </div>
+
+          <!-- Instagram QR Box -->
+          <div class="qr-card ig-qr-card">
+            <div class="qr-badge ig-badge"><i class="fa-brands fa-instagram"></i> Instagram</div>
+            <div class="qr-image-wrapper">
+              <img src="assets/images/instagram_qr.jpg" alt="有真丸 公式Instagram QRコード">
+              <div class="qr-scan-hint"><i class="fa-solid fa-qrcode"></i> スマホで読み取り</div>
+            </div>
+            <div class="qr-content">
+              <h3>公式 Instagram (@yushinmaru.jp)</h3>
+              <p class="qr-desc">毎出航のリアルタイム釣果写真、動画、DMでのお問い合わせ・予約リクエストに対応！</p>
+              <a href="https://www.instagram.com/yushinmaru.jp/" target="_blank" rel="noopener" class="btn-qr-action ig-btn">
+                <i class="fa-brands fa-instagram"></i> Instagramを見る・DMを送る
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Phone & Web Form Grid -->
+        <div class="contact-grid">
+          <!-- Phone Card -->
+          <div class="contact-phone-card">
+            <div class="phone-icon-box"><i class="fa-solid fa-phone-volume"></i></div>
+            <span class="phone-sub">お電話でのご予約・お問合せ</span>
+            <a href="tel:090-0000-0000" class="phone-number">090-0000-0000</a>
+            <p class="phone-hours"><i class="fa-solid fa-clock"></i> 受付時間：8:00 〜 20:00 （年中無休）</p>
+            <p class="phone-note">※操船中や沖合航行中は電話に出られない場合があります。その際はLINEまたはWEBフォームよりメッセージをお送りください。折り返しご連絡いたします。</p>
+          </div>
+
+          <!-- Web Form Card -->
+          <div class="contact-form-card">
+            <h3 class="form-title"><i class="fa-solid fa-pen-to-square"></i> WEB予約・お問い合わせフォーム</h3>
+            <form id="reservation-form" class="res-form">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="res-name"><i class="fa-solid fa-user"></i> お名前 <span class="req">必須</span></label>
+                  <input type="text" id="res-name" required placeholder="例：山田 太郎">
+                </div>
+                <div class="form-group">
+                  <label for="res-phone"><i class="fa-solid fa-phone"></i> 電話番号 <span class="req">必須</span></label>
+                  <input type="tel" id="res-phone" required placeholder="例：090-1234-5678">
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="res-date"><i class="fa-solid fa-calendar"></i> ご希望日 <span class="req">必須</span></label>
+                  <input type="date" id="res-date" required>
+                </div>
+                <div class="form-group">
+                  <label for="res-plan"><i class="fa-solid fa-fish"></i> ご希望プラン <span class="req">必須</span></label>
+                  <select id="res-plan" required>
+                    <option value="">-- プランを選択してください --</option>
+                    <option value="ジギング・キャスティング便">ジギング・キャスティング便（¥13,000）</option>
+                    <option value="タイラバ・SLJ便">タイラバ・SLJ・ティップラン便（¥12,000）</option>
+                    <option value="夜焚きイカメタル便">夜焚きケンサキイカメタル便（¥11,000）</option>
+                    <option value="1船貸切チャーター便">1船仕立てチャーター便（¥80,000〜）</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="res-num"><i class="fa-solid fa-users"></i> ご利用人数 <span class="req">必須</span></label>
+                  <select id="res-num" required>
+                    <option value="1名">1名様</option>
+                    <option value="2名">2名様</option>
+                    <option value="3名">3名様</option>
+                    <option value="4名">4名様</option>
+                    <option value="5名以上">5名様以上</option>
+                    <option value="チャーター（貸切）">チャーター（貸切）</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="res-rental"><i class="fa-solid fa-wand-magic-sparkles"></i> レンタル竿・リール</label>
+                  <select id="res-rental">
+                    <option value="不要">不要（マイタックル持参）</option>
+                    <option value="1セット必要">1セット希望 (+¥2,000)</option>
+                    <option value="2セット以上必要">2セット以上希望</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="res-message"><i class="fa-solid fa-comment-dots"></i> メッセージ・ご質問</label>
+                <textarea id="res-message" rows="3" placeholder="ご質問や仕掛け・同行者様について等ご自由にご記入ください。"></textarea>
+              </div>
+
+              <button type="submit" class="btn-form-submit">
+                <i class="fa-solid fa-paper-plane"></i> 予約申込みを送信する
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Form Modal -->
+    <div class="form-success-modal" id="form-modal">
+      <div class="form-modal-card">
+        <i class="fa-solid fa-circle-check success-icon"></i>
+        <h3>ご送信ありがとうございます！</h3>
+        <p>ご予約のお申し込みを受け付けました。船長より空き状況の確認お電話またはLINEにてご連絡いたします。</p>
+        <button class="btn-modal-close" id="btn-close-form-modal">OK</button>
+      </div>
+    </div>
+
+    <!-- =================================================================== -->
+    <!-- 6. 遊漁船業者票の貼り付け (5 A4 LICENSES / REGISTRATION CARDS)       -->
+    <!-- =================================================================== -->
+    <section class="license-section" id="license">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle">06. COMPLIANCE & LICENSES</span>
+          <h2 class="section-title">遊漁船業者票 <span>（法定公開書類 A4 5枚）</span></h2>
+          <p class="section-lead-desc">遊漁船業の適正化に関する法律に基づき、当船の登録標識・損害保険・安全設備等の法定公開書類（A4サイズ5枚）を公開掲載しています。</p>
+        </div>
+
+        <div class="license-gallery-grid">
+          <!-- A4 Doc 1 -->
+          <article class="license-a4-card">
+            <div class="license-tag-badge">【A4-1】登録標識</div>
+            <div class="license-paper-wrapper" data-doc="assets/images/license_doc1.jpg" data-title="遊漁船業者登録票">
+              <img src="assets/images/license_doc1.jpg" alt="遊漁船業者登録票 A4">
+              <div class="license-overlay-hover">
+                <span class="zoom-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> 拡大表示する</span>
+              </div>
+            </div>
+            <div class="license-card-info">
+              <h3>遊漁船業者登録票</h3>
+              <p class="license-meta"><i class="fa-solid fa-certificate"></i> 島根県知事登録 第XXXX号</p>
+              <p class="license-summary">有真丸の事業者登録情報・有効期間・営業所所在地等の法定掲示事項です。</p>
+            </div>
+          </article>
+
+          <!-- A4 Doc 2 -->
+          <article class="license-a4-card">
+            <div class="license-tag-badge">【A4-2】損害保険</div>
+            <div class="license-paper-wrapper" data-doc="assets/images/license_doc2.jpg" data-title="損害賠償措置の概要">
+              <img src="assets/images/license_doc2.jpg" alt="損害賠償措置の概要 A4">
+              <div class="license-overlay-hover">
+                <span class="zoom-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> 拡大表示する</span>
+              </div>
+            </div>
+            <div class="license-card-info">
+              <h3>損害賠償措置の概要</h3>
+              <p class="license-meta"><i class="fa-solid fa-shield-halved"></i> 1名最高5,000万円 / 1事故6億円補償</p>
+              <p class="license-summary">万が一の事故に備え、全乗船者を対象とする最上位クラスの遊漁船賠償責任保険を締結しています。</p>
+            </div>
+          </article>
+
+          <!-- A4 Doc 3 -->
+          <article class="license-a4-card">
+            <div class="license-tag-badge">【A4-3】設備＆安全</div>
+            <div class="license-paper-wrapper" data-doc="assets/images/license_doc3.jpg" data-title="遊漁船設備及び安全設備一覧">
+              <img src="assets/images/license_doc3.jpg" alt="遊漁船設備及び安全設備一覧 A4">
+              <div class="license-overlay-hover">
+                <span class="zoom-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> 拡大表示する</span>
+              </div>
+            </div>
+            <div class="license-card-info">
+              <h3>遊漁船設備及び安全設備一覧</h3>
+              <p class="license-meta"><i class="fa-solid fa-life-ring"></i> 救命胴衣・AED・無線機法定点検済</p>
+              <p class="license-summary">乗船定員分以上の救命衣、救命浮環、無線設備、信号紅炎等の備えを公開しています。</p>
+            </div>
+          </article>
+
+          <!-- A4 Doc 4 -->
+          <article class="license-a4-card">
+            <div class="license-tag-badge">【A4-4】航行＆遵守</div>
+            <div class="license-paper-wrapper" data-doc="assets/images/license_doc4.jpg" data-title="航行区域及び遵守事項票">
+              <img src="assets/images/license_doc4.jpg" alt="航行区域及び遵守事項票 A4">
+              <div class="license-overlay-hover">
+                <span class="zoom-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> 拡大表示する</span>
+              </div>
+            </div>
+            <div class="license-card-info">
+              <h3>航行区域及び遵守事項票</h3>
+              <p class="license-meta"><i class="fa-solid fa-compass"></i> 出港中止基準・アルコール検知義務</p>
+              <p class="license-summary">沿海区域の航行範囲、気象悪化時の出港中止基準、乗船者の安全遵守ルールです。</p>
+            </div>
+          </article>
+
+          <!-- A4 Doc 5 -->
+          <article class="license-a4-card">
+            <div class="license-tag-badge">【A4-5】避難＆応急</div>
+            <div class="license-paper-wrapper" data-doc="assets/images/license_doc5.jpg" data-title="避難港及び応急手当体制">
+              <img src="assets/images/license_doc5.jpg" alt="避難港及び応急手当体制 A4">
+              <div class="license-overlay-hover">
+                <span class="zoom-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> 拡大表示する</span>
+              </div>
+            </div>
+            <div class="license-card-info">
+              <h3>避難港及び事故時応急体制</h3>
+              <p class="license-meta"><i class="fa-solid fa-kit-medical"></i> 海上保安庁118番通報緊急体制図</p>
+              <p class="license-summary">益田港・浜田港をはじめとする避難港ルートと、緊急事態発生時の救援連携プロトコルです。</p>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- =================================================================== -->
-    <!-- EXTERNAL BLOG SECTION (ブログは外部へ)                              -->
-    <!-- =================================================================== -->
-    <section class="blog-section" id="blog">
-      <div class="container">
-        <div class="blog-banner-card">
-          <div class="blog-icon"><i class="fa-solid fa-blog"></i></div>
-          <span class="section-subtitle" style="color:var(--logo-yellow);">OFFICIAL BLOG</span>
-          <h2 class="blog-banner-title">釣果情報・出船予定は外部ブログへ</h2>
-          <p class="blog-banner-desc">
-            最新の釣果速報や出船スケジュール、現場の海況レポートは公式外部ブログにて毎日更新しております。下記ボタンよりご覧ください。
-          </p>
-          <a href="https://ameblo.jp" target="_blank" rel="noopener" class="btn-blog-external">
-            <span>公式ブログを見る (外部サイト)</span>
-            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-          </a>
+    <!-- License Document Zoom Lightbox Modal -->
+    <div class="license-modal-overlay" id="license-modal">
+      <div class="license-modal-box">
+        <button class="license-modal-close" id="btn-close-license-modal"><i class="fa-solid fa-xmark"></i></button>
+        <div class="license-modal-header">
+          <span class="lic-modal-badge"><i class="fa-solid fa-file-contract"></i> 法定公開標識 (A4)</span>
+          <h3 id="license-modal-title">遊漁船業者票</h3>
+        </div>
+        <div class="license-modal-body">
+          <img id="license-modal-img" src="" alt="A4 拡大文書">
+        </div>
+        <div class="license-modal-footer">
+          <p><i class="fa-solid fa-circle-info"></i> 当船は遊漁船業の適正化に関する法律を遵守し、安全第一で運航しております。</p>
         </div>
       </div>
-    </section>
+    </div>
 
     <!-- =================================================================== -->
-    <!-- ACCESS SECTION (アクセス・Googleマップ)                             -->
+    <!-- 7. アクセス (LOCATION & ACCESS)                                     -->
     <!-- =================================================================== -->
     <section class="access-section" id="access">
       <div class="container">
         <div class="section-header">
-          <span class="section-subtitle">LOCATION & PORT</span>
+          <span class="section-subtitle">07. LOCATION & ACCESS</span>
           <h2 class="section-title">集合港 <span>アクセス</span></h2>
+          <p class="section-lead-desc">島根県益田港。無料専用駐車場完備。お車・交通アクセスのご案内。</p>
         </div>
 
         <div class="access-grid">
@@ -389,7 +936,8 @@
               <div class="access-icon"><i class="fa-solid fa-anchor"></i></div>
               <div class="access-detail">
                 <h4>有真丸 集合港・船着場</h4>
-                <p>〒698-0000 島根県益田市 益田港 岸壁（無料駐車場完備）</p>
+                <p>〒698-0000 島根県益田市 益田港 岸壁（有真丸専用船着場）</p>
+                <span class="access-badge-small"><i class="fa-solid fa-square-parking"></i> 大型無料駐車場あり</span>
               </div>
             </div>
 
@@ -397,7 +945,7 @@
               <div class="access-icon"><i class="fa-solid fa-car"></i></div>
               <div class="access-detail">
                 <h4>お車でお越しの場合</h4>
-                <p>山陰自動車道「益田道路」各ICより車で約10分。港内の有真丸専用駐車スペースをご利用ください。</p>
+                <p>山陰自動車道「益田道路」各ICより車で約10分。萩・石見空港より車で約15分。港内の看板前に駐車いただけます。</p>
               </div>
             </div>
 
@@ -405,34 +953,14 @@
               <div class="access-icon"><i class="fa-solid fa-clock"></i></div>
               <div class="access-detail">
                 <h4>集合時間</h4>
-                <p>出港時間の【30分前】までに集合港へお越しください。</p>
+                <p>出港予定時間の【30分前】までに集合港へお越しいただき、乗船名簿のご記入をお願いいたします。</p>
               </div>
             </div>
           </div>
 
           <div class="map-placeholder">
-            <iframe title="有真丸 港マップ" src="https://maps.google.com/maps?q=Masuda,Shimane&t=&z=13&ie=UTF8&iwloc=&output=embed" loading="lazy"></iframe>
+            <iframe title="有真丸 集合港マップ" src="https://maps.google.com/maps?q=Masuda,Shimane&t=&z=13&ie=UTF8&iwloc=&output=embed" loading="lazy"></iframe>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- =================================================================== -->
-    <!-- INSTAGRAM SECTION (ボタンのみの誘導)                               -->
-    <!-- =================================================================== -->
-    <section class="instagram-section" id="instagram">
-      <div class="container">
-        <div class="ig-banner-card">
-          <div class="ig-banner-icon"><i class="fa-brands fa-instagram"></i></div>
-          <div class="ig-handle">@yushinmaru.jp</div>
-          <h3 class="ig-title">公式 Instagram で最新情報をチェック</h3>
-          <p class="ig-desc">
-            最新の釣果写真、動画、出船状況はInstagramで発信中！
-          </p>
-          <a href="https://www.instagram.com/yushinmaru.jp/" target="_blank" rel="noopener" class="btn-ig-only">
-            <i class="fa-brands fa-instagram"></i>
-            <span>Instagram を見る</span>
-          </a>
         </div>
       </div>
     </section>
@@ -444,32 +972,56 @@
   <footer class="site-footer">
     <div class="container">
       <div class="footer-content">
-        <a href="#hero" class="brand-logo" style="margin-bottom:1rem; display:inline-flex;">
-          <img src="assets/images/logo.png" alt="有真丸 ロゴ" style="width:40px; height:40px; border-radius:50%;">
+        <a href="#hero" class="brand-logo" style="margin-bottom:1.5rem; display:inline-flex;">
+          <img src="assets/images/logo.png" alt="有真丸 ロゴ" style="width:48px; height:48px; border-radius:50%;">
           <div class="brand-text">
             <span class="brand-name">有真丸</span>
             <span class="brand-sub">YUSHINMARU</span>
           </div>
         </a>
         <p class="footer-desc">
-          本格オフショア遊漁船『有真丸』 | 島根県益田港出港
+          本格オフショア遊漁船『有真丸』 | 島根県益田港出港<br>
+          ジギング・キャスティング・タイラバ・夜焚きイカメタル
         </p>
 
         <div class="footer-nav-links">
-          <a href="#concept">CONCEPT</a>
-          <a href="#boat">SPECS</a>
-          <a href="#menu">MENU</a>
-          <a href="#blog">BLOG</a>
-          <a href="#access">ACCESS</a>
-          <a href="https://www.instagram.com/yushinmaru.jp/" target="_blank" rel="noopener">INSTAGRAM</a>
+          <a href="#concept">自己紹介</a>
+          <a href="#boat">船の紹介</a>
+          <a href="#menu">料金内容</a>
+          <a href="#catch">釣果等</a>
+          <a href="#contact">予約お問合せ</a>
+          <a href="#license">遊漁船業者票 (5枚)</a>
+          <a href="#access">アクセス</a>
         </div>
 
         <div class="footer-bottom">
-          <p>&copy; 2026 有真丸 (YUSHINMARU) Official Site. All Rights Reserved.</p>
+          <p>&copy; 2026 有真丸 (YUSHINMARU) Official Website. All Rights Reserved.</p>
         </div>
       </div>
     </div>
   </footer>
+
+  <!-- =================================================================== -->
+  <!-- FIXED MOBILE QUICK ACTION BAR                                       -->
+  <!-- =================================================================== -->
+  <div class="mobile-fixed-action-bar">
+    <a href="tel:090-0000-0000" class="mob-act-btn phone-btn">
+      <i class="fa-solid fa-phone"></i>
+      <span>電話</span>
+    </a>
+    <a href="#contact" class="mob-act-btn line-btn">
+      <i class="fa-brands fa-line"></i>
+      <span>LINE予約</span>
+    </a>
+    <a href="https://www.instagram.com/yushinmaru.jp/" target="_blank" rel="noopener" class="mob-act-btn ig-btn">
+      <i class="fa-brands fa-instagram"></i>
+      <span>インスタ</span>
+    </a>
+    <a href="#license" class="mob-act-btn doc-btn">
+      <i class="fa-solid fa-certificate"></i>
+      <span>業者票</span>
+    </a>
+  </div>
 
   <!-- Main JavaScript File -->
   <script src="assets/js/main.js"></script>

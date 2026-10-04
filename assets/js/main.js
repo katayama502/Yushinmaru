@@ -1,6 +1,6 @@
 /**
  * YUSHINMARU (有真丸) - Vibrant Marine Blue & Pure White Engine
- * Video Hero Scroll-Driven Interaction, Clean Nav Control & Smooth Animations
+ * Interactive Controls, Catch Filter, A4 License Zoom, Modals & Video Parallax
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -8,23 +8,26 @@ document.addEventListener('DOMContentLoaded', () => {
   initHeaderScroll();
   initMobileNav();
   initScrollVideoHero();
+  initBoatVideoModal();
+  initCatchFilterAndLightbox();
+  initLicenseModal();
+  initReservationForm();
   initSmoothScroll();
 });
 
 /* -------------------------------------------------------------------------- */
-/* 1. Opening Calligraphy Brush Splash Screen (毛筆風 ズームアップ演出)        */
+/* 1. Splash Screen Timeout                                                   */
 /* -------------------------------------------------------------------------- */
 function initSplashScreen() {
   const splashScreen = document.getElementById('splash-screen');
   if (!splashScreen) return;
-
   setTimeout(() => {
     splashScreen.style.display = 'none';
   }, 3600);
 }
 
 /* -------------------------------------------------------------------------- */
-/* 2. Header Scroll Effect                                                     */
+/* 2. Header Scroll Backdrop                                                  */
 /* -------------------------------------------------------------------------- */
 function initHeaderScroll() {
   const header = document.querySelector('.site-header');
@@ -69,14 +72,11 @@ function initMobileNav() {
   toggleBtn.addEventListener('click', openDrawer);
   closeBtn?.addEventListener('click', closeDrawer);
   overlay.addEventListener('click', closeDrawer);
-
-  navLinks.forEach(link => {
-    link.addEventListener('click', closeDrawer);
-  });
+  navLinks.forEach(link => link.addEventListener('click', closeDrawer));
 }
 
 /* -------------------------------------------------------------------------- */
-/* 4. Scroll-Driven Video Hero Effect (有真丸動画スクロール連動演出)           */
+/* 4. Scroll Video Hero Effect                                                */
 /* -------------------------------------------------------------------------- */
 function initScrollVideoHero() {
   const heroSection = document.getElementById('hero');
@@ -85,11 +85,8 @@ function initScrollVideoHero() {
 
   if (!heroSection || !heroVideo) return;
 
-  // 確実に自動再生させるための発火処理
   heroVideo.muted = true;
-  heroVideo.play().catch(err => {
-    console.log('Autoplay prevented, user interaction required:', err);
-  });
+  heroVideo.play().catch(err => console.log('Autoplay deferred:', err));
 
   let ticking = false;
 
@@ -99,24 +96,17 @@ function initScrollVideoHero() {
 
     if (scrollY <= heroHeight) {
       const scrollRatio = scrollY / heroHeight;
-
-      // 動画のスケール＆ブラー連動（スクロールするにつれて動画が拡大・トーン調整）
       const videoScale = 1.05 + scrollRatio * 0.15;
-      const videoBrightness = Math.max(0.4, 0.85 - scrollRatio * 0.3);
+      const videoBrightness = Math.max(0.45, 0.85 - scrollRatio * 0.3);
 
       heroVideo.style.transform = `scale(${videoScale})`;
       heroVideo.style.filter = `brightness(${videoBrightness}) contrast(1.05)`;
 
-      // テキストコンテンツのパララックス＆フェードアウト
       if (heroContent) {
-        const contentTranslateY = scrollY * 0.4;
-        const contentOpacity = Math.max(0, 1 - scrollRatio * 1.4);
-
-        heroContent.style.transform = `translateY(${contentTranslateY}px)`;
-        heroContent.style.opacity = contentOpacity;
+        heroContent.style.transform = `translateY(${scrollY * 0.35}px)`;
+        heroContent.style.opacity = Math.max(0, 1 - scrollRatio * 1.3);
       }
     }
-
     ticking = false;
   }
 
@@ -126,22 +116,157 @@ function initScrollVideoHero() {
       ticking = true;
     }
   }, { passive: true });
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        heroVideo.play().catch(() => {});
-      } else {
-        heroVideo.pause();
-      }
-    });
-  }, { threshold: 0.1 });
-
-  observer.observe(heroSection);
 }
 
 /* -------------------------------------------------------------------------- */
-/* 5. Smooth Scroll                                                            */
+/* 5. Boat Video Modal                                                        */
+/* -------------------------------------------------------------------------- */
+function initBoatVideoModal() {
+  const openBtn = document.getElementById('btn-open-boat-video');
+  const closeBtn = document.getElementById('btn-close-boat-video');
+  const modal = document.getElementById('boat-video-modal');
+  const video = document.getElementById('boat-modal-video');
+
+  if (!openBtn || !modal) return;
+
+  openBtn.addEventListener('click', () => {
+    modal.classList.add('active');
+    if (video) video.play();
+  });
+
+  function closeModal() {
+    modal.classList.remove('active');
+    if (video) video.pause();
+  }
+
+  closeBtn?.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+}
+
+/* -------------------------------------------------------------------------- */
+/* 6. Catch Gallery Filter & Lightbox                                         */
+/* -------------------------------------------------------------------------- */
+function initCatchFilterAndLightbox() {
+  const filterBtns = document.querySelectorAll('.catch-filter-bar .filter-btn');
+  const catchCards = document.querySelectorAll('.catch-card');
+  const lightbox = document.getElementById('catch-lightbox');
+  const closeBtn = document.getElementById('btn-close-catch-modal');
+  const modalImg = document.getElementById('catch-modal-img');
+  const modalTitle = document.getElementById('catch-modal-title');
+  const modalSpecs = document.getElementById('catch-modal-specs');
+  const modalComment = document.getElementById('catch-modal-comment');
+  const modalCat = document.getElementById('catch-modal-category');
+
+  // Filter functionality
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filter = btn.getAttribute('data-filter');
+
+      catchCards.forEach(card => {
+        const cat = card.getAttribute('data-category');
+        if (filter === 'all' || cat === filter) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+
+  // Lightbox functionality
+  catchCards.forEach(card => {
+    card.addEventListener('click', () => {
+      const img = card.querySelector('img')?.src;
+      const title = card.querySelector('.catch-title')?.textContent;
+      const specs = card.querySelector('.catch-specs')?.textContent;
+      const comment = card.querySelector('.catch-comment')?.textContent;
+      const cat = card.querySelector('.catch-category-tag')?.textContent;
+
+      if (lightbox && modalImg) {
+        modalImg.src = img || '';
+        if (modalTitle) modalTitle.textContent = title || '';
+        if (modalSpecs) modalSpecs.textContent = specs || '';
+        if (modalComment) modalComment.textContent = comment || '';
+        if (modalCat) modalCat.textContent = cat || '';
+
+        lightbox.classList.add('active');
+      }
+    });
+  });
+
+  closeBtn?.addEventListener('click', () => lightbox?.classList.remove('active'));
+  lightbox?.addEventListener('click', (e) => {
+    if (e.target === lightbox) lightbox.classList.remove('active');
+  });
+}
+
+/* -------------------------------------------------------------------------- */
+/* 7. License Documents Zoom Lightbox (A4 5 Documents)                        */
+/* -------------------------------------------------------------------------- */
+function initLicenseModal() {
+  const wrappers = document.querySelectorAll('.license-paper-wrapper');
+  const modal = document.getElementById('license-modal');
+  const closeBtn = document.getElementById('btn-close-license-modal');
+  const modalImg = document.getElementById('license-modal-img');
+  const modalTitle = document.getElementById('license-modal-title');
+
+  if (!modal) return;
+
+  wrappers.forEach(wrap => {
+    wrap.addEventListener('click', () => {
+      const docSrc = wrap.getAttribute('data-doc');
+      const docTitle = wrap.getAttribute('data-title');
+
+      if (modalImg) modalImg.src = docSrc || '';
+      if (modalTitle) modalTitle.textContent = docTitle || '遊漁船業者票';
+
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  function closeModal() {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  closeBtn?.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+}
+
+/* -------------------------------------------------------------------------- */
+/* 8. Web Reservation Form Submission & Success Modal                         */
+/* -------------------------------------------------------------------------- */
+function initReservationForm() {
+  const form = document.getElementById('reservation-form');
+  const modal = document.getElementById('form-modal');
+  const closeBtn = document.getElementById('btn-close-form-modal');
+
+  if (!form || !modal) return;
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    modal.classList.add('active');
+    form.reset();
+  });
+
+  closeBtn?.addEventListener('click', () => {
+    modal.classList.remove('active');
+  });
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) modal.classList.remove('active');
+  });
+}
+
+/* -------------------------------------------------------------------------- */
+/* 9. Smooth Scroll for Anchor Links                                          */
 /* -------------------------------------------------------------------------- */
 function initSmoothScroll() {
   const internalLinks = document.querySelectorAll('a[href^="#"]');
